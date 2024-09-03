@@ -98,11 +98,11 @@ public class Filme {
         this.usuariosQueSalvaram = usuariosQueSalvaram;
     }
 
-    public List<Usuario> getUsuariosQueCurtiram() {
+    public Set<Usuario> getUsuariosQueCurtiram() {
         return usuariosQueCurtiram;
     }
 
-    public void setUsuariosQueCurtiram(List<Usuario> usuariosQueCurtiram) {
+    public void setUsuariosQueCurtiram(Set<Usuario> usuariosQueCurtiram) {
         this.usuariosQueCurtiram = usuariosQueCurtiram;
     }
 
