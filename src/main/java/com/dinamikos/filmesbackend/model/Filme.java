@@ -7,14 +7,15 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_filmes")
 public class Filme {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank(message = "O Atributo Título é Obrigatório!")
@@ -37,7 +38,7 @@ public class Filme {
 
     @ManyToMany(mappedBy = "filmesCurtidos")
     @JsonIgnoreProperties("filmesCurtidos")
-    private List<Usuario> usuariosQueCurtiram;
+    private Set<Usuario> usuariosQueCurtiram = new HashSet<>();
 
     @OneToMany(mappedBy = "filme")
     @JsonIgnoreProperties("filme")

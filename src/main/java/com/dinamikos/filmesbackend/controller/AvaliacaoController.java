@@ -1,7 +1,9 @@
 package com.dinamikos.filmesbackend.controller;
 
 import com.dinamikos.filmesbackend.model.Avaliacao;
+import com.dinamikos.filmesbackend.model.Filme;
 import com.dinamikos.filmesbackend.repository.AvaliacaoRepository;
+import com.dinamikos.filmesbackend.service.FilmeService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,6 +22,9 @@ public class AvaliacaoController {
     @Autowired
     private AvaliacaoRepository avaliacaoRepository;
 
+    @Autowired
+    private FilmeService filmeService;
+
     @GetMapping("/all")
     public ResponseEntity<List<Avaliacao>> getAll() {
         return ResponseEntity.ok(avaliacaoRepository.findAll());
@@ -34,6 +39,9 @@ public class AvaliacaoController {
 
     @PostMapping
     public ResponseEntity<Avaliacao> post(@RequestBody @Valid Avaliacao avaliacao) {
+        Filme filme = avaliacao.getFilme();
+        filmeService.salvarFilme(filme);
+
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(avaliacaoRepository.save(avaliacao));
     }

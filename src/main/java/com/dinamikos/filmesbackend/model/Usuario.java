@@ -7,7 +7,9 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_usuarios")
@@ -41,11 +43,11 @@ public class Usuario {
 
     @ManyToMany
     @JoinTable(
-            name = "tb_usuarios_filmes_curtidos",
+            name = "usuario_filme_curtiu",
             joinColumns = @JoinColumn(name = "usuario_id"),
-            inverseJoinColumns = @JoinColumn(name = "filme_id"))
-    @JsonIgnoreProperties("usuariosQueCurtiram")
-    private List<Filme> filmesCurtidos;
+            inverseJoinColumns = @JoinColumn(name = "filme_id")
+    )
+    private Set<Filme> filmesCurtidos = new HashSet<>();
 
     @OneToMany(mappedBy = "usuario")
     @JsonIgnoreProperties("usuario")
@@ -105,11 +107,11 @@ public class Usuario {
         this.filmesSalvos = filmesSalvos;
     }
 
-    public List<Filme> getFilmesCurtidos() {
+    public Set<Filme> getFilmesCurtidos() {
         return filmesCurtidos;
     }
 
-    public void setFilmesCurtidos(List<Filme> filmesCurtidos) {
+    public void setFilmesCurtidos(Set<Filme> filmesCurtidos) {
         this.filmesCurtidos = filmesCurtidos;
     }
 
