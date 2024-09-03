@@ -1,7 +1,7 @@
 package com.dinamikos.filmesbackend.security;
 
-import com.generation.blogpessoal.model.Usuario;
-import com.generation.blogpessoal.repository.UsuarioRepository;
+import com.dinamikos.filmesbackend.model.Usuario;
+import com.dinamikos.filmesbackend.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UserDetails;

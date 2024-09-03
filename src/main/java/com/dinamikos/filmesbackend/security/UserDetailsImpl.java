@@ -1,6 +1,6 @@
 package com.dinamikos.filmesbackend.security;
 
-import com.generation.blogpessoal.model.Usuario;
+import com.dinamikos.filmesbackend.model.Usuario;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
